@@ -5,7 +5,7 @@ st.markdown(
     """
 <style>
 .css-1v3fvcr {
-    background-color: lightgray !important;
+    background-color: ghostwhite !important;
     height: 100vh;
     width: 100vw;
     }
@@ -66,7 +66,7 @@ if form.form_submit_button('Generate Some Text'):
     text_placeholder.empty()
     radio_placeholder.empty()
     text_input_placeholder.empty()
-    text = "'twit data: bla bla...................................'"
+    text = "'tweet data: bla bla...................................'"
     st.write(text)
 
     st.title('evaluation:')
