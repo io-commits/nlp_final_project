@@ -1,4 +1,4 @@
-from happytransformer import HappyGeneration, GENTrainArgs
+from happytransformer import GENTrainArgs
 from happytransformer import HappyGeneration
 from happytransformer import GENSettings
 import regex as re
@@ -21,7 +21,7 @@ class GptNeo:
         :param model_dir: desired model save path
         :return:
         """
-        gpt_neo = HappyGeneration("GPT-Neo", "EleutherAI/gpt-neo-125M")
+        gpt_neo = HappyGeneration("GPHappyGeneration, T-Neo", "EleutherAI/gpt-neo-125M")
         train_args = GENTrainArgs(num_train_epochs=1, learning_rate=5e-05, batch_size=2)
         gpt_neo.train(path, args=train_args)
         gpt_neo.save(model_dir)

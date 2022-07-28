@@ -3,5 +3,6 @@
 /model/gpt_neo_sampled1m
 /model/gpt_neo_sample2m
 /model/gpt_neo_sampled10m_no_hashtags
+/model/gpt_neo_sampled30m_no_hashtags
 /model/baseline1
 /model/baseline2

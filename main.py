@@ -6,6 +6,17 @@ from tqdm import tqdm
 import zipfile
 
 if __name__ == '__main__':
+    """
+    The main program of the project.
+    The flow is as follows:
+    -> Lists with name initialization 
+    -> Calling GDrive API 
+    -> Retrieval of file system 
+    -> Query to our needs 
+    -> Download ZIP files of ALL models (including not supported baseline models)
+    -> UnZipping all models ZIPs
+    -> Calling streamlit using subprocess - output to main's console
+    """
     gpt_names = ['gpt_neo_sampled30m_no_hashtags',
                  'gpt_neo_sampled10m_no_hashtags',
                  'gpt_neo_sampled1m',

@@ -4,14 +4,12 @@ import pyter
 
 
 def bleu(ref, gen):
-    '''
+    """
     calculate pair wise bleu score. uses nltk implementation
-    Args:
-        ref : a list of reference sentences
-        can : a list of candidate(generated) sentences
-    Returns:
-        bleu score(float)
-    '''
+    :param ref - a list of reference sentences
+    :param gen - a list of candidate(generated) sentences
+    :return bleu score(float)
+    """
     ref_bleu = []
     gen_bleu = []
     for l in gen:
@@ -20,7 +18,7 @@ def bleu(ref, gen):
         ref_bleu.append([l.split()])
     cc = SmoothingFunction()
     score_bleu = corpus_bleu(ref_bleu, gen_bleu, weights=(0, 1, 0, 0), smoothing_function=cc.method4)
-
+    return score_bleu
 
 # rouge scores for a reference/generated sentence pair
 # source google seq2seq source code.
@@ -34,8 +32,7 @@ def _split_into_words(sentences):
 
 # supporting function
 def _get_word_ngrams(n, sentences):
-    """Calculates word n-grams for multiple sentences.
-  """
+    """Calculates word n-grams for multiple sentences."""
     assert len(sentences) > 0
     assert n > 0
 
@@ -45,13 +42,12 @@ def _get_word_ngrams(n, sentences):
 
 # supporting function
 def _get_ngrams(n, text):
-    """Calcualtes n-grams.
-  Args:
-    n: which n-grams to calculate
-    text: An array of tokens
-  Returns:
-    A set of n-grams
-  """
+    """
+    Calcualtes n-grams.
+    :param n -  which n-grams to calculate
+    :param text - An array of tokens
+    :return - A set of n-grams
+    """
     ngram_set = set()
     text_length = len(text)
     max_index_ngram_start = text_length - n
@@ -62,18 +58,15 @@ def _get_ngrams(n, text):
 
 def rouge_n(reference_sentences, evaluated_sentences, n=2):
     """
-  Computes ROUGE-N of two text collections of sentences.
-  Source: http://research.microsoft.com/en-us/um/people/cyl/download/
-  papers/rouge-working-note-v1.3.1.pdf
-  Args:
-    evaluated_sentences: The sentences that have been picked by the summarizer
-    reference_sentences: The sentences from the referene set
-    n: Size of ngram.  Defaults to 2.
-  Returns:
-    recall rouge score(float)
-  Raises:
-    ValueError: raises exception if a param has len <= 0
-  """
+    Computes ROUGE-N of two text collections of sentences.
+    Source: http://research.microsoft.com/en-us/um/people/cyl/download/
+    papers/rouge-working-note-v1.3.1.pdf
+    :param evaluated_sentences - The sentences that have been picked by the summarizer
+    :param reference_sentences - The sentences from the referene set
+    :param n -  Size of ngram.  Defaults to 2.
+    :return recall rouge score(float)
+    :raises ValueError - raises exception if a param has len <= 0
+    """
     if len(evaluated_sentences) <= 0 or len(reference_sentences) <= 0:
         raise ValueError("Collections must contain at least 1 sentence.")
 
@@ -105,13 +98,12 @@ def rouge_n(reference_sentences, evaluated_sentences, n=2):
 
 
 def ter(ref, gen):
-    '''
-    Args:
-        ref - reference sentences - in a list
-        gen - generated sentences - in a list
-    Returns:
-        averaged TER score over all sentence pairs
-    '''
+    """
+    Calculates and returns the TER score between the references sequence to the generated sequences.
+    :param  - ref - reference sentences - in a list
+    :param - gen - generated sentences - in a list
+    :return: averaged TER score over all sentence pairs
+    """
     if len(ref) == 1:
         total_score =  pyter.ter(gen[0].split(), ref[0].split())
     else:
@@ -131,14 +123,12 @@ these files should be in the same directory
 
 
 def evaluation_metrics(ref, gen, n_for_rouge=2):
-    '''
-    Args:
-        ref_file_path (string) : reference file path -> file containing the reference sentences on each line
-        gen_file_path (string) : model generated file path -> containing corresponding generated sentences(to reference sentences) on each line
+    """
+    :param - ref - reference file path -> file containing the reference sentences on each line
+    :param - gen - model generated file path -> containing corresponding generated sentences(to reference sentences) on each line
 
-    Returns:
-        A list containing [bleu, rouge, meteor, ter]
-    '''
+    A list containing [bleu, rouge, meteor, ter]
+    """
 
     for i, l in enumerate(gen):
         gen[i] = l.strip()

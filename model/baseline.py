@@ -16,15 +16,9 @@ class Baseline:
     """
     The class constructed to hold our baseline model logic.
     Same model architecture has been trained with data of size [10k, 50, 100k, 1m]
+    Non instantiable for now - saved with kaggle's environment binaries and mismatches non kaggle machines
     """
-    def __init__(self):
-        self.models = None
-        self.models_names = None
-        self.max_seq_dict = None
-        self.max_seq_list = None
-        self.tokenizers = None
-
-    def load(self, root):
+    def __init__(self, root):
         top10k = tensorflow.keras.models.load_model(f'{root}/top10k')
         top50k = tensorflow.keras.models.load_model(f'{root}/top50k')
         top100k = tensorflow.keras.models.load_model(f'{root}/top100k')
@@ -49,6 +43,7 @@ class Baseline:
             with open(f'{name}_tokenizer.pkl', 'rb') as f:
                 self.tokenizers.append((name, pickle.load(f)))
 
+    def load(self):
         return self
 
     def tokenize_and_pad(self, df):
