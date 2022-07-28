@@ -1,5 +1,31 @@
 # Ukraine - Russia conflict tweets generator
 
+---
+
+# Table of contents
+
+- [Ukraine - Russia conflict tweets generator](#ukraine---russia-conflict-tweets-generator)
+  - [Introduction](#introduction)
+- [Repository Contents](#repository-contents)
+  - [You WILL find here](#you-will-find-here)
+  - [You will not find here](#you-will-not-find-here)
+- [Repository File System](#repository-file-system)
+  - [data - blank](#data---blank)
+  - [experiments - blank](#experiments---blank)
+  - [model](#model)
+  - [Notebooks](#notebooks)
+- [Research Flow](#research-flow)
+  - [Data](#data)
+  - [Loading the data](#loading-the-data)
+  - [Data 'Types'](#data-types)
+  - [Pre-Process](#pre-process)
+  - [Baseline model architecture](#baseline-model-architecture)
+  - [GPT-NEO Architecture](#gpt-neo-architecture)
+  - [Training](#training)
+  - [Evaluation](#evaluation)
+
+---
+
 ## Introduction
 On that project we have created a sequence generator. 
 
