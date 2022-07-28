@@ -1,5 +1,12 @@
+import subprocess
+from pathlib import Path
+
 import streamlit as st
-import pandas as pd
+from model.gpt_neo import GptNeo
+from model.baseline import Baseline
+
+from commander import Commander
+com = Commander()
 
 st.markdown(
     """
@@ -38,7 +45,7 @@ st.markdown(title, unsafe_allow_html=True)
 # data_load_state.text("Done! (using st.cache)")
 
 text_placeholder = st.empty()
-header = '<p style="color:darkred; font-size: 15px;">*Fill all the fields before run:</p>'
+header = '<p style="color:white; font-size: 20px;">Fill all the fields before run:</p>'
 text_placeholder.markdown(header, unsafe_allow_html=True)
 
 radio_placeholder = st.empty()
@@ -53,7 +60,11 @@ if option == 'autocomplete':
 # if g_a_form .form_submit_button('Select'):
 placeholder = st.empty()
 form = placeholder.form("my_form")
-form.selectbox('Please select model', ['model1', 'model2', 'model3', 'model4', 'model5'])
+form.selectbox('Please select model', ['gpt_neo_sampled10m_no_hashtags',
+                          'gpt_neo_sampled1m',
+                          'gpt_neo_sample2m',
+                          'baseline1',
+                          'baseline2'])
 form.text('Please inferred amount of characters')
 number = '<input type="number" min="0" max="100" placeholder="" style="color:green;"></input>'
 form.markdown(number, unsafe_allow_html=True)

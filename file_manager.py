@@ -1,20 +1,22 @@
-# import the required libraries
 from __future__ import print_function
 import pickle
 import os.path
 import io
 import shutil
-import requests
-from mimetypes import MimeTypes
+import time
+
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from googleapiclient.http import MediaIoBaseDownload, MediaFileUpload
 from pathlib import Path
+from google_drive_downloader import GoogleDriveDownloader as gdd
 
 
 class DriveAPI:
-
+    """
+    a class designed to communicate with Google Drive api
+    """
     global SCOPES
 
     # Define the scopes
@@ -69,8 +71,8 @@ class DriveAPI:
 
         # print a list of files
         self.items = items
-        print("Here's a list of files: \n")
-        print(*items, sep="\n", end="\n\n")
+        #print("Here's a list of files: \n")
+        #print(*items, sep="\n", end="\n\n")
 
     def FileDownload(self, file_id, file_name, root):
         request = self.service.files().get_media(fileId=file_id)
@@ -82,9 +84,10 @@ class DriveAPI:
 
         try:
             # Download the data in chunks
+            print(f"Started downloading {file_name}", end='\n')
             while not done:
                 status, done = downloader.next_chunk()
-
+                time.sleep(0.001)
             fh.seek(0)
             full_path = Path(root, file_name)
             # Write the received data to the file
@@ -99,6 +102,5 @@ class DriveAPI:
             # Return False if something went wrong
             print("Something went wrong.")
             return False
-
 
 

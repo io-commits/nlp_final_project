@@ -7,8 +7,8 @@ def bleu(ref, gen):
     '''
     calculate pair wise bleu score. uses nltk implementation
     Args:
-        references : a list of reference sentences
-        candidates : a list of candidate(generated) sentences
+        ref : a list of reference sentences
+        can : a list of candidate(generated) sentences
     Returns:
         bleu score(float)
     '''
