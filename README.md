@@ -12,8 +12,6 @@ On the sections below we will elaborate on the development and research process.
 All of the files needed for the app to run.
 
 ## You will not find here
-### Jupyter Notebooks
-### resource files
 ### binaries
 
 # Repository File System
