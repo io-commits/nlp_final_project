@@ -49,6 +49,8 @@ class Baseline:
             with open(f'{name}_tokenizer.pkl', 'rb') as f:
                 self.tokenizers.append((name, pickle.load(f)))
 
+        return self
+
     def tokenize_and_pad(self, df):
         """
         tokenizing and padding given df

@@ -6,7 +6,8 @@ from tqdm import tqdm
 import zipfile
 
 if __name__ == '__main__':
-    gpt_names = ['gpt_neo_sampled10m_no_hashtags',
+    gpt_names = ['gpt_neo_sampled30m_no_hashtags',
+                 'gpt_neo_sampled10m_no_hashtags',
                  'gpt_neo_sampled1m',
                  'gpt_neo_sample2m']
 
@@ -38,7 +39,7 @@ if __name__ == '__main__':
     # unzip
     print('\n\n Unzipping GPT', end='\n\n')
     for g in gpt_names:
-        dir_path = f'{prefix}{g}'.replace('.zip', '')
+        dir_path = f'{prefix}{g}'.replace('.zip', 'gpt_neo_sampled30m_no_hashtags')
         if not Path(dir_path).exists():
             os.mkdir(f"{dir_path}")
             with zipfile.ZipFile(f'{prefix}{g}{suffix}', 'r') as zip_ref:
