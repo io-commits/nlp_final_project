@@ -7,12 +7,16 @@ We have used mainly tensorflow.keras and happytransformet platforms for that pro
 
 On the sections below we will elaborate on the development and research process.
 
+---
+
 # Repository Contents
 ## You WILL find here
 All of the files needed for the app to run.
 
 ## You will not find here
 ### binaries
+
+---
 
 # Repository File System
 ## data - blank
@@ -41,7 +45,14 @@ Has all the streamlit related logic.
 Has all the project requirements.
 ### token.pickle 
 The occurs when processing GDriveAPI related credentials.
+## Notebooks
+- baseline-generator.ipynb - The code executed to train the baseline models
+- exploratory.ipynb - The exploratory code
+- gpt-neo.ipynb - The code executed to train gpt-neo models
+- load.ipynb - The code designed to handle the data and make it pre-process friendly
+- pre_process-sampled.ipynb - The preprocess related code.
 
+---
 
 # Research Flow
 ## Data
